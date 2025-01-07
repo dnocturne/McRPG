@@ -8,7 +8,7 @@ public abstract class McRPGPlayerEvent extends Event {
 
     private final McRPGPlayer mcRPGPlayer;
 
-    public McRPGPlayerEvent(McRPGPlayer mcRPGPlayer){
+    public McRPGPlayerEvent(@NotNull McRPGPlayer mcRPGPlayer){
         this.mcRPGPlayer = mcRPGPlayer;
     }
 
