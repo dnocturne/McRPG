@@ -42,7 +42,7 @@ public class McRPGPlayerUnloadTask extends PlayerUnloadTask {
             SkillHolder skillHolder = mcRPGPlayer.asSkillHolder();
 
             try (Connection connection = getPlugin().getDatabase().getConnection()) {
-                mcRPGPlayer.savePlayer(connection);
+                mcRPGPlayer.savePlayer(connection, true);
                 return true;
             }
             catch (SQLException e) {

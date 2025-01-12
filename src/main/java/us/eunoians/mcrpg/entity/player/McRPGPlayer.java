@@ -193,6 +193,10 @@ public class McRPGPlayer extends CorePlayer {
     }
 
     public void savePlayer(@NotNull Connection connection) {
+        savePlayer(connection, false);
+    }
+
+    public void savePlayer(@NotNull Connection connection, boolean removeMutex) {
         BatchTransaction batchTransaction = new BatchTransaction(connection);
         FailSafeTransaction failsafeTransaction = new FailSafeTransaction(connection);
         failsafeTransaction.addAll(SkillDAO.saveAllSkillHolderInformation(connection, skillHolder));
@@ -203,7 +207,7 @@ public class McRPGPlayer extends CorePlayer {
         failsafeTransaction.executeTransaction();
         batchTransaction.executeTransaction();
 
-        if (useMutex()) {
+        if (removeMutex && useMutex()) {
             MutexDAO.updateUserMutex(connection, getUUID(), false);
         }
     }

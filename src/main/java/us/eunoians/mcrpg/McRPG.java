@@ -155,7 +155,7 @@ public class McRPG extends CorePlugin {
             try (Connection connection = getDatabase().getConnection()) {
                 for (CorePlayer corePlayer : playerManager.getAllPlayers()) {
                     if (corePlayer instanceof McRPGPlayer mcRPGPlayer) {
-                        mcRPGPlayer.savePlayer(connection);
+                        mcRPGPlayer.savePlayer(connection, true);
                         if (isLunarEnabled()) {
                             LunarUtils.clearCooldowns(mcRPGPlayer.getUUID());
                         }
